@@ -1,0 +1,38 @@
+server:
+  port: 9012
+spring:
+  application:
+    name: zuul-filter
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+      probability: 1.0
+    zipkin:
+      # 指定了 Zipkin 服务器的地址
+      base-url: http://192.168.2.5:9411/
+eureka:
+  client:
+    service-url:
+      # Eureka注册地址
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    # 让Eureka Server为每个微服务分配IP地址
+    prefer-ip-address: true
+    #服务续约间隔时间
+    lease-renewal-interval-in-seconds: 5
+    #服务续约到期时间
+    lease-expiration-duration-in-seconds: 15
+
+zuul:
+  routes:
+    demo-base:
+      # 转发路径
+      path: /base/**
+      # 需要转发到的微服务名称
+      serviceId: demo-base
+    demo-qa:
+      path: /qa/**
+      serviceId: demo-qa

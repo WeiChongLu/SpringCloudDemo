@@ -1,0 +1,44 @@
+server:
+  port: 6868
+spring:
+  application:
+    name: eureka
+  #是否开启基本的鉴权
+  security:
+    basic:
+      enabled: true
+    #指定默认的用户名
+    user:
+      name: admin
+    #默认的用户密码
+      password: 123456
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+      probability: 1.0
+    zipkin:
+      # 指定了 Zipkin 服务器的地址
+      base-url: http://192.168.2.5:9411/
+eureka:
+  client:
+    # 是否往Eureka注册
+    register-with-eureka: false
+    # 是否从Eureka获取注册信息
+    fetch-registry: false
+    # Eureka注册地址
+    #service-url:
+      #defaultZone: http://192.168.2.5:${server.port}/eureka
+    server:
+      #自我保护机制
+      enable-self-preservation: false
+      #扫描失效服务的间隔时间（单位毫秒，默认是60*1000）即60秒
+      eviction-interval-timer-in-ms: 3000
+    instance:
+      #将IP注册到Eureka Server上，如果不配置就是机器的主机名
+      prefer-ip-address: true
+      #关闭自我保护
+      leaseRenewalIntervalInSeconds: 1
+      leaseExpirationDurationInSeconds: 2

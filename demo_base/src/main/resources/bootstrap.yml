@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:12000
+      name: base   # 应用名称
+      profile: dev # 环境名称   name-profile  base-dev.yml
+      label: master   # 仓库的分支名称

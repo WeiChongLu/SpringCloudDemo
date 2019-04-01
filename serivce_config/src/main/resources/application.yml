@@ -1,0 +1,26 @@
+server:
+  port: 13000
+
+spring:
+  application:
+    #应用名称
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          #git仓库地址
+          uri: https://github.com/WeiChongLu/config.git
+          #username: 如果仓库是私有的，需要
+          #password: 如果仓库是私有的，需要
+
+  rabbitmq:
+    host: 192.168.2.5
+
+
+    #暴露触发消息总线的地址,git上修改配置文件后访问可以触发更新，应用不需要重启
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
