@@ -45,6 +45,7 @@ public class LabelController {
         System.out.println("333333");
         System.out.println("444444");
         System.out.println("dev+55555");
+        System.out.println("devTest+666");
         return new Result(true, StatusCode.OK,"查询成功",labelService.findAll());
 
     }
