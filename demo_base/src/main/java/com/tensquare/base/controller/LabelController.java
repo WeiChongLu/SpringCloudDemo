@@ -41,6 +41,7 @@ public class LabelController {
         System.out.println("==你所在服务的IP：" +
                 address +"-----" + request.getServerPort() );
         System.out.println("111111");
+        System.out.println("222222");
         return new Result(true, StatusCode.OK,"查询成功",labelService.findAll());
 
     }
