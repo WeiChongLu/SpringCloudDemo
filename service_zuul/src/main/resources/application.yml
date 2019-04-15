@@ -36,3 +36,6 @@ zuul:
     demo-qa:
       path: /qa/**
       serviceId: demo-qa
+  host:
+    connection-request-timeout-millis: 3000
+    socket-timeout-millis: 10000
